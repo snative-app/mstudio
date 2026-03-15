@@ -42,3 +42,36 @@ pnpm run check:conflicts
 ```
 
 Si no hay marcadores `<<<<<<<`, `=======`, `>>>>>>>` en `src/`, la salida indicará `No conflict markers found in src/`.
+
+## Cómo resolver el conflicto del PR (App.svelte y app.css)
+
+Si GitHub marca conflicto en esos 2 archivos, puedes resolverlo localmente así:
+
+```bash
+# 1) Trae cambios del remoto
+git fetch origin
+
+# 2) Párate en tu rama del PR
+git checkout <tu-rama-pr>
+
+# 3) Mezcla main dentro de tu rama
+git merge origin/main
+
+# 4) Si hay conflicto, conserva la versión del editor MVP
+#    (o abre el editor de merge y combina manualmente)
+git checkout --ours src/App.svelte src/app.css
+
+# 5) Marca como resuelto y commitea
+git add src/App.svelte src/app.css
+git commit -m "fix: resolve merge conflicts with main"
+
+# 6) Verifica que compila y que no hay marcadores
+pnpm run check:conflicts
+pnpm build
+
+# 7) Empuja la rama y el PR quedará sin conflictos
+git push origin <tu-rama-pr>
+```
+
+> Nota: yo desde este entorno no puedo hacer click en "Approve" dentro de GitHub, pero sí dejar la rama lista para merge.
+
