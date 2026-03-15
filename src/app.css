@@ -1,59 +1,65 @@
 :root {
   font-family: Inter, system-ui, sans-serif;
-  color: #d9e0f0;
-  background: #080d19;
+  color: #e6edf7;
+  background: #05070f;
 }
 * { box-sizing: border-box; }
 body { margin: 0; }
 
+* { box-sizing: border-box; }
+body { margin: 0; }
+
 main {
-  height: 100vh;
+  min-height: 100vh;
   display: grid;
-  grid-template-columns: 340px 1fr;
+  grid-template-columns: 280px 1fr;
 }
 
 aside {
-  background: #111826;
-  border-right: 1px solid #26324a;
   padding: 1rem;
-  overflow: auto;
+  border-right: 1px solid #1a2232;
+  background: #0b1120;
 }
 
-h1 { margin: 0 0 .5rem; font-size: 1rem; }
-h2 { margin: .9rem 0 .35rem; font-size: .9rem; }
-p { margin: 0 0 .65rem; color: #96a5c3; font-size: .82rem; }
+h1 { font-size: 1.1rem; margin: 0 0 .5rem; }
+h2 { font-size: .95rem; margin: 1rem 0 .5rem; }
+p { margin: 0 0 .8rem; color: #91a1c2; }
 
-.toolbar {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: .35rem;
-  margin-bottom: .35rem;
-}
-.toolbar.compact { margin-top: .5rem; }
-
-button,
-input {
+button, input {
   width: 100%;
-  background: #1a2437;
-  color: #eaf0ff;
-  border: 1px solid #324566;
-  border-radius: 6px;
-  padding: .48rem .55rem;
-  margin-top: .35rem;
+  margin-top: .45rem;
+  border: 1px solid #2b3954;
+  background: #121b2d;
+  color: #e6edf7;
+  border-radius: .45rem;
+  padding: .5rem .6rem;
 }
-button:hover { cursor: pointer; border-color: #5a80f5; }
-button:disabled { opacity: .45; cursor: not-allowed; }
-.objects button.selected { border-color: #ffd65a; }
 
-label { display: block; margin-top: .4rem; font-size: .78rem; color: #a0afd0; }
+button:hover { border-color: #5d89ff; cursor: pointer; }
+.list button.selected { border-color: #ffe066; }
 
-.viewport { padding: .8rem; }
+label {
+  display: block;
+  font-size: .8rem;
+  color: #9fb0d3;
+  margin-top: .5rem;
+}
+
+.viewport {
+  position: relative;
+  padding: .8rem;
+}
+
 canvas {
   width: 100%;
   height: calc(100vh - 3rem);
-  border: 1px solid #23324e;
-  border-radius: 8px;
+  border: 1px solid #1a2232;
+  border-radius: .5rem;
   touch-action: none;
-  display: block;
 }
-.meta { margin-top: .8rem; color: #d5ddf2; }
+
+.viewport p {
+  margin-top: .5rem;
+  font-size: .8rem;
+}
+.meta { margin-top: .9rem; color: #cad5f0; }
