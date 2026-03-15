@@ -3,6 +3,8 @@
   color: #e6edf7;
   background: #05070f;
 }
+* { box-sizing: border-box; }
+body { margin: 0; }
 
 * { box-sizing: border-box; }
 body { margin: 0; }
@@ -60,3 +62,4 @@ canvas {
   margin-top: .5rem;
   font-size: .8rem;
 }
+.meta { margin-top: .9rem; color: #cad5f0; }
