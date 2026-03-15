@@ -1,55 +1,65 @@
 :root {
   font-family: Inter, system-ui, sans-serif;
-  color: #e8edf8;
-  background: #050811;
+  color: #e6edf7;
+  background: #05070f;
 }
+* { box-sizing: border-box; }
+body { margin: 0; }
+
 * { box-sizing: border-box; }
 body { margin: 0; }
 
 main {
   min-height: 100vh;
   display: grid;
-  grid-template-columns: 320px 1fr;
+  grid-template-columns: 280px 1fr;
 }
 
 aside {
   padding: 1rem;
-  border-right: 1px solid #1b2436;
-  background: #0c1322;
+  border-right: 1px solid #1a2232;
+  background: #0b1120;
 }
 
-h1 { margin: 0 0 .45rem; font-size: 1.05rem; }
-h2 { margin: 1rem 0 .4rem; font-size: .92rem; }
-p { margin: 0 0 .75rem; color: #99a9c9; font-size: .86rem; }
+h1 { font-size: 1.1rem; margin: 0 0 .5rem; }
+h2 { font-size: .95rem; margin: 1rem 0 .5rem; }
+p { margin: 0 0 .8rem; color: #91a1c2; }
 
-label { display: block; margin-top: .5rem; font-size: .78rem; color: #9bacd0; }
 button, input {
   width: 100%;
-  margin-top: .38rem;
-  padding: .5rem .58rem;
-  color: #ecf2ff;
-  background: #111a2d;
-  border: 1px solid #2a3752;
+  margin-top: .45rem;
+  border: 1px solid #2b3954;
+  background: #121b2d;
+  color: #e6edf7;
   border-radius: .45rem;
+  padding: .5rem .6rem;
 }
-button:hover { border-color: #5780f5; cursor: pointer; }
-button:disabled { opacity: .45; cursor: not-allowed; }
+
+button:hover { border-color: #5d89ff; cursor: pointer; }
 .list button.selected { border-color: #ffe066; }
 
-.row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: .35rem;
-  margin-bottom: .2rem;
+label {
+  display: block;
+  font-size: .8rem;
+  color: #9fb0d3;
+  margin-top: .5rem;
 }
-.row.slim { margin-top: .5rem; }
 
-.viewport { padding: .8rem; }
+.viewport {
+  position: relative;
+  padding: .8rem;
+}
+
 canvas {
   width: 100%;
   height: calc(100vh - 3rem);
+  border: 1px solid #1a2232;
   border-radius: .5rem;
-  border: 1px solid #1b2436;
   touch-action: none;
+}
+
+.viewport p {
+  margin-top: .5rem;
+  font-size: .8rem;
 }
 .meta { margin-top: .9rem; color: #cad5f0; }
