@@ -1,43 +1,41 @@
-# Svelte + Vite
+# MStudio MVP (Editor-style en Svelte)
 
-This template should help get you started developing with Svelte in Vite.
+Este MVP usa una arquitectura inspirada en el **flujo del editor de Three.js**:
+- panel lateral (objetos + inspector)
+- viewport central
+- unidades en **cm** y ejes claros para mueblería
 
-## Recommended IDE Setup
+## Qué trae
 
-[VS Code](https://code.visualstudio.com/) + [Svelte](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode).
+- Alta rápida de piezas: **Base**, **Lateral**, **Tapa**, **Cubo**.
+- Inspector con medidas correctas:
+  - **Ancho (X)**
+  - **Alto (Y)**
+  - **Profundidad (Z)**
+- Posicionamiento por ejes en cm.
+- Snap en cm.
+- Duplicar / eliminar pieza.
+- Viewport con orbita + zoom.
 
-## Need an official Svelte framework?
+## Scripts
 
-Check out [SvelteKit](https://github.com/sveltejs/kit#readme), which is also powered by Vite. Deploy anywhere with its serverless-first approach and adapt to various platforms, with out of the box support for TypeScript, SCSS, and Less, and easily-added support for mdsvex, GraphQL, PostCSS, Tailwind CSS, and more.
-
-## Technical considerations
-
-**Why use this over SvelteKit?**
-
-- It brings its own routing solution which might not be preferable for some users.
-- It is first and foremost a framework that just happens to use Vite under the hood, not a Vite app.
-
-This template contains as little as possible to get started with Vite + Svelte, while taking into account the developer experience with regards to HMR and intellisense. It demonstrates capabilities on par with the other `create-vite` templates and is a good starting point for beginners dipping their toes into a Vite + Svelte project.
-
-Should you later need the extended capabilities and extensibility provided by SvelteKit, the template has been structured similarly to SvelteKit so that it is easy to migrate.
-
-**Why include `.vscode/extensions.json`?**
-
-Other templates indirectly recommend extensions via the README, but this file allows VS Code to prompt the user to install the recommended extension upon opening the project.
-
-**Why enable `checkJs` in the JS template?**
-
-It is likely that most cases of changing variable types in runtime are likely to be accidental, rather than deliberate. This provides advanced typechecking out of the box. Should you like to take advantage of the dynamically-typed nature of JavaScript, it is trivial to change the configuration.
-
-**Why is HMR not preserving my local component state?**
-
-HMR state preservation comes with a number of gotchas! It has been disabled by default in both `svelte-hmr` and `@sveltejs/vite-plugin-svelte` due to its often surprising behavior. You can read the details [here](https://github.com/sveltejs/svelte-hmr/tree/master/packages/svelte-hmr#preservation-of-local-state).
-
-If you have state that's important to retain within a component, consider creating an external store which would not be replaced by HMR.
-
-```js
-// store.js
-// An extremely simple external store
-import { writable } from 'svelte/store'
-export default writable(0)
+```bash
+pnpm dev
+pnpm build
+pnpm run check:conflicts
 ```
+
+## Estructura
+
+- `src/lib/mstudio/editorStore.js` → estado y operaciones del editor.
+- `src/lib/mstudio/viewportCanvas.js` → viewport/render interactivo.
+- `src/App.svelte` → shell tipo editor.
+
+## Nota importante sobre Three.js y Svelte 4
+
+Se intentó traer `three.js/editor` directamente y migrarlo, pero este entorno devuelve `403 Forbidden` al acceder a GitHub/npm/CDN externos, por lo que no es posible copiar dependencias remotas aquí.
+
+Aun así, este código quedó preparado para migrar rápido a Three.js real:
+1. Reemplazar `viewportCanvas.js` por un `ViewportThree.js`.
+2. Mantener el contrato de piezas (`id,name,w,h,d,x,y,z`) y el inspector actual.
+3. Conectar Orbit/TransformControls del stack oficial cuando esté habilitada la red.
