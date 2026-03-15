@@ -32,3 +32,13 @@ Migrar el motor de dibujo a `three.js/editor` manteniendo este mismo modelo de d
 ## Nota de entorno
 
 En este entorno la instalación de paquetes npm externos devolvió `403 Forbidden`, por eso el MVP actual usa canvas nativo como base funcional inmediata.
+
+## Verificación rápida de conflictos
+
+Antes de mergear, puedes correr:
+
+```bash
+pnpm run check:conflicts
+```
+
+Si no hay marcadores `<<<<<<<`, `=======`, `>>>>>>>` en `src/`, la salida indicará `No conflict markers found in src/`.
